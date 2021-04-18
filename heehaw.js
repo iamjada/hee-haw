@@ -8,14 +8,17 @@
  *
  */
 
-// get access to the button using const
 document.getElementById("btnHeeHaw").onclick = heeHaw;
-validate(heeHaw());
 
-// get access to the input box
 function heeHaw()
 {
     const number = document.getElementById("number").value;
+
+    if (isNaN(number) || number > 0)
+    {
+        let errorNum = document.getElementById("error-num");
+        errorNum.style.display = "inline";
+    }
 
     for(let i = 1; i<=number; i++)
     {
@@ -40,28 +43,9 @@ function heeHaw()
         else
         {
             document.write(i + " <br>");
-            console.log(i);
+            //console.log(i);
         }
     } // end of for
 
 } // end of heeHaw
 
-function validate()
-{
-    // flag variable
-    let isValid = true;
-    // clear all error message
-    let errors = document.getElementsByClassName("error");
-    for (let i = 0; i < errors.length; i++) {
-        errors[i].style.display = "none";
-    }
-
-    // check for valid number
-    let num = document.getElementById("number").value;
-    if (isNaN(num) || num > 0) {
-        let errorNum = document.getElementById("error-num");
-        errorNum.style.display = "inline";
-        isValid = false;
-    }
-    return isValid;
-}
